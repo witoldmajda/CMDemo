@@ -39,5 +39,7 @@
         <TextBlock Grid.Row="3" Grid.Column="2" x:Name="SelectedPerson_LastName" />
 
         <Button x:Name="ClearText" Grid.Row="4" Grid.Column="1">Clear Names</Button>
+
+        <Button x:Name="SendContent" Grid.Row="4" Grid.Column="2">Send to View</Button>
     </Grid>
 </UserControl>

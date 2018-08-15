@@ -27,8 +27,14 @@
 
         <Button x:Name="LoadPageTwo" Grid.Row="1" Grid.Column="2">Load Page Two</Button>
 
-        <ContentControl Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="5"
-                        x:Name="ActiveItem" />
+        <!--<ContentControl Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"
+                        x:Name="ActiveItem" />-->
+
+        <ContentControl Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"
+                        x:Name="FirstChild" />
+
+        <ContentControl Grid.Row="2" Grid.Column="3" Grid.ColumnSpan="2"
+                        x:Name="SecondChild" />
 
 
 

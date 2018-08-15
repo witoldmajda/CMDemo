@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WPFUI.Models;
+using WPFUI.Views;
 
 namespace WPFUI.ViewModels
 {
@@ -17,7 +18,15 @@ namespace WPFUI.ViewModels
             People.Add(new PersonModel { FirstName = "Sue", LastName = "Storm" });
         }
 
+        private IEventAggregator eventAggregator;
 
+        public FirstChildViewModel(IEventAggregator eventAggregator)
+        {
+            this.eventAggregator = eventAggregator;
+            People.Add(new PersonModel { FirstName = "Tim", LastName = "Corey" });
+            People.Add(new PersonModel { FirstName = "John", LastName = "Cartney" });
+            People.Add(new PersonModel { FirstName = "Sue", LastName = "Storm" });
+        }
 
         private string _firstName = "Tim";
 
@@ -76,6 +85,7 @@ namespace WPFUI.ViewModels
         }
 
         private PersonModel _selectedPerson;
+        
 
         public PersonModel SelectedPerson
         {
@@ -109,5 +119,24 @@ namespace WPFUI.ViewModels
             LasttName = "";
         }
 
+        
+
+        protected override void OnViewAttached(object view, object context)
+        {
+            base.OnViewAttached(view, context);
+            //PM = new PersonModel();
+            SelectedPerson = new PersonModel();
+
+        }
+
+        public void SendContent()
+        {
+            eventAggregator.PublishOnUIThread(SelectedPerson);
+            SelectedPerson = new PersonModel();
+            //_pm(SelectedPerson);
+        }
+
+        public delegate void UserDelegate(PersonModel personModel);
+        public UserDelegate _pm;
     }
 }
